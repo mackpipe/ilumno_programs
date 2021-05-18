@@ -1,0 +1,7 @@
+ilumno_programs.programs_form:
+  path: '/ilumno-module/form'
+  defaults:
+    _form: '\Drupal\ilumno_programs\Form\ProgramsForm'
+    _title: 'ProgramsForm'
+  requirements:
+    _access: 'TRUE'

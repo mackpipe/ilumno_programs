@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Contains ilumno_programs.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function ilumno_programs_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the ilumno_programs module.
+    case 'help.page.ilumno_programs':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('This module is for testing purposes, it stores data loaded from a form') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function ilumno_programs_theme() {
+  return [
+    'ilumno_programs' => [
+      'render element' => 'children',
+    ],
+  ];
+}

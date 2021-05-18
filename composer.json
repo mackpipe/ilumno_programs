@@ -1,0 +1,13 @@
+{
+    "name": "ilumno_programs",
+    "type": "drupal-module",
+    "description": "This module is for testing purposes, it stores data loaded from a form",
+    "keywords": [
+    ],
+    "homepage": "https://www.drupal.org/project/ilumno_programs",
+    "minimum-stability": "dev",
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/ilumno_programs",
+        "source": "http://cgit.drupalcode.org/ilumno_programs",
+    },
+}

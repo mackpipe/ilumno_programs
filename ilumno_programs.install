@@ -1,0 +1,121 @@
+<?php
+
+/**
+ * @file
+ */
+
+/**
+ * Implements hook_schema().
+ * Create the tables programs and user_register in the database.
+ */
+function ilumno_programs_schema() {
+  // Scheme for the table programs
+  $schema['programs'] = [
+    'description' => 'Almacen registros de programas',
+    'fields' => [
+      'program_id' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => 'Almacena el id del programa',
+      ],
+      'program_name' => [
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Almacena el nombre del programa.',
+      ],
+      'program_identifier' => [
+        'type' => 'varchar',
+        'length' => 20,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Almacena el identificador del programa.',
+      ],
+      'program_code' => [
+        'type' => 'varchar',
+        'length' => 20,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Almacena el código del programa.',
+      ],
+      'program_date' => [
+        'type' => 'varchar',
+        'length' => 20,
+        'not null' => FALSE,
+        'default' => '',
+        'description' => 'Almacena la fecha del programa.',
+      ],
+      'program_type' => [
+        'type' => 'varchar',
+        'length' => 20,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Almacena la opción del programa',
+      ],
+      'state' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'size' => 'tiny',
+        'description' => 'Almacena el estado del programa.',
+      ],
+
+    ],
+    'primary key' => ['program_id'],
+  ];
+  // Scheme for the table user_register
+  $schema['user_register'] = [
+    'description' => 'almacena registro de usuarios',
+    'fields' => [
+      'user_register_id' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => 'Almacena el id del registro de usuario',
+      ],
+      'user_name' => [
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Almacena el nombre del usuario.',
+      ],
+      'user_program' => [
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Almacena el nombre del programa del usuario.',
+      ],
+      'user_comment' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Almacena el comentario del registro de usuario.',
+      ],
+      'user_date' => [
+        'type' => 'varchar',
+        'not null' => FALSE,
+        'length' => 20,
+        'default' => '',
+        'description' => 'Almacena la fecha del registro de usuario.',
+      ],
+    ],
+    'primary key' => ['user_register_id'],
+  ];
+
+  return $schema;
+}
+
+/**
+ * Implements hook_uninstall().
+ * Delete the tables programs and user_register from the database when uninstalling the module.
+ */
+function ilumno_programs_uninstall() {
+  $db_connection = \Drupal::database();
+  // Delete table programas
+  $db_connection->schema()->dropTable('programs');
+  // Delete table user_register
+  $db_connection->schema()->dropTable('user_register');
+}
